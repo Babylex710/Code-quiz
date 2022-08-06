@@ -1,0 +1,63 @@
+.header {
+    text-decoration: none;
+}
+
+.header:hover {
+    color: blue;
+}
+
+#timer {
+    margin-right: 25px;
+    float: right;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 35px;
+}
+
+.instructions {
+    text-align: center;
+}
+
+.start_Btn {
+    margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: blueviolet;
+  color: aliceblue;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.start_Btn:hover {
+    background-color: deeppink;
+}
+
+/* .questions {
+    display: none;
+} */
+
+.done {
+    display: none;
+}
+
+.highscores {
+    display: none;
+}
+
+.highscores ol {
+    overflow-y: scroll;
+}
+
+/* .container {
+    display: none;
+} */
