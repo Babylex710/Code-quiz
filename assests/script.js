@@ -140,72 +140,18 @@ function allDone() {
     score.textContent = correctAnswer;
 }
 
-// var highscores = document.getElementById('highscores')
-// function saveHighScores(event) {
-//     event.preventDefault();
-// }
-
-highscores.style.display = "block";
-
-var storeScores = localStorage.getItem('highscores');
-var scoreString;
-
-if (storeScores === null) {
-    scoreString = [];
-} else {
-    scoreString = JSON.parse(storeScores)
-}
-
-var totalScore = {
-    initials: initials.value,
-    score: score.textContent
-};
-
-console.log(totalScore);
-scoreString.push(totalScore);
-
-
-var scoreList = JSON.stringify(scoreString);
-window.localStorage.setItem('highscores', scoreList);
-
-userHighscores();
-
-function userHighscores() {
-    highscores.style.display = "block";
-
-    var storeScores = localStorage.getItem('highscores');
-    if (storeScores === null) {
-        return;
-    }
-    console.log(storeScores);
-
-    // var list = document.getElementById('list')
-    // var allHighscores = JSON.parse(storeScores);
-    // for ( var i = 0; i < allHighscores.length; i++){
-    //     var newScore = document.createElement('p');
-    //     newScore.innerHTML = allHighscores[i].initials + ":"+ allHighscores[i].score;
-    //     list.appendChild(userHighscores);
-    // }
-}
 
 
 
-//Added event listener for Submit, Go Bck, View Highscores and Clear buttons
+//Added event listener for Submit, View Highscores, Go Back and Clear buttons
 var submit = document.getElementById('submit');
-submit.addEventListener('click', function (event) {
-    allHighscores(event);
-});
+submit.addEventListener('click');
 
 var view = document.getElementById('view')
-view.addEventListener('click', function (event) {
-    userHighscores(event);
-});
+view.addEventListener('click');
 
 var back = document.getElementById('backBtn');
-back.addEventListener('click', function () {
-    startButton.style.display = "block";
-});
+back.addEventListener('click');
 
-var clear = document.getElementById('clearBtn', function () {
-    window.localStorage.removeItem('highscores');
-});
+var clear = document.getElementById('clearBtn');
+clearBtn.addEventListener('click');
