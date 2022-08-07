@@ -1,4 +1,5 @@
-const questions = [
+//Create a variable to define a set of questions with answers
+let questions = [
     {
         question: "Commonly used data types DO NOT include:",
         choices: ["a. strings", "b. booleans", "c. numbers", "d. alerts"],
@@ -30,27 +31,29 @@ const questions = [
     }
 ];
 
-const startButton = document.getElementById('startBtn');
+//Added an event listener for Start Button to begin quiz
+let startButton = document.getElementById('startBtn');
 startButton.addEventListener('click', startGame);
 
+//Created variables for Time section
 var timer = document.getElementById('timer');
 var timeLeft = document.getElementById('timeLeft');
 var questionIndex = 0;
 var totalTime = 60;
 
-
+//Funcation created to start 60 second timer
 function startGame() {
     console.log('started')
     totalTime = 60;
     questionIndex = 0
     timeLeft.textContent = totalTime;
     initials.textContent = "";
-
+    //Hide start button and highscore board
     startButton.style.display = "none";
     questionContainer.style.display = "block";
     timer.style.display = "block";
     highscores.style.display = "none";
-
+    //When time runs out, the game is over
     var startTimer = setInterval(function () {
         totalTime--;
         timeLeft.textContent = totalTime;
@@ -65,7 +68,7 @@ function startGame() {
 };
 
 
-
+//Created variables for question section and to check answers
 var questionContainer = document.getElementById('questionContainer');
 var questionsDiv = document.getElementById('questionsDiv');
 var answerA = document.getElementById('btn1');
@@ -74,28 +77,26 @@ var answerC = document.getElementById('btn3');
 var answerD = document.getElementById('btn4');
 var checkAnswer = document.getElementById('checkAnswer');
 var correctAnswer = 0;
-
+//Function to present user with the first question
 function startQuiz() {
     console.log('present question')
     nextQuestion();
 }
-
+//Funtion to present next question after previous question is answered
 function nextQuestion() {
     questionsDiv.textContent = questions[questionIndex].question;
     answerA.textContent = questions[questionIndex].choices[0];
     answerB.textContent = questions[questionIndex].choices[1];
     answerC.textContent = questions[questionIndex].choices[2];
     answerD.textContent = questions[questionIndex].choices[3];
-
-
 };
-
+//Funtion to see if answer is correct or incorrect
 function selectAnswer(answer) {
     var line = document.getElementById('line');
     line.style.display = "block";
     checkAnswer.style.display = "block";
     highscores.style.display = "none";
-
+    //User will be notify if answer is correct or wrong. Time will be deducted by 10 secs
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
         correctAnswer++;
         checkAnswer.textContent = "Correct!🤩";
@@ -104,31 +105,32 @@ function selectAnswer(answer) {
         timeLeft.textContent = totalTime;
         checkAnswer.textContent = "Wrong!🙁";
     }
+    //Next question is presented 
     questionIndex++;
-
+    //Quiz is done when all questions are answered
     if (questionIndex < questions.length) {
         nextQuestion();
     } else {
         allDone();
     }
 }
-
+//Checks answer for selected choice
 function choiceA() { selectAnswer(0); }
 function choiceB() { selectAnswer(1); }
 function choiceC() { selectAnswer(2); }
 function choiceD() { selectAnswer(3); }
-
+//Added event listener to multiple choice buttons
 answerA.addEventListener('click', choiceA);
 answerB.addEventListener('click', choiceB);
 answerC.addEventListener('click', choiceC);
 answerD.addEventListener('click', choiceD);
 
-
+//Variables for scores and initials
 var done = document.getElementById('done');
 var score = document.getElementById('score');
 var initials = document.getElementById('initials');
 var submit = document.getElementById('submit');
-
+//Game is over when time is done 
 function allDone() {
     done.style.display = "block";
     questionContainer.style.display = "none";
@@ -138,10 +140,10 @@ function allDone() {
     score.textContent = correctAnswer;
 }
 
-var highscores = document.getElementById('highscores')
-function saveHighScores(event) {
-    event.preventDefault();
-}
+// var highscores = document.getElementById('highscores')
+// function saveHighScores(event) {
+//     event.preventDefault();
+// }
 
 highscores.style.display = "block";
 
@@ -177,30 +179,33 @@ function userHighscores() {
     }
     console.log(storeScores);
 
-    var list = document.getElementById('list')
-    var allHighscores = JSON.parse(storeScores);
-    for ( var i = 0; i < allHighscores.length; i++){
-        var newScore = document.createElement('p');
-        newScore.innerHTML = allHighscores[i].initials + allHighscores[i].score;
-        list.appendChild(allHighscores);
-    }
+    // var list = document.getElementById('list')
+    // var allHighscores = JSON.parse(storeScores);
+    // for ( var i = 0; i < allHighscores.length; i++){
+    //     var newScore = document.createElement('p');
+    //     newScore.innerHTML = allHighscores[i].initials + ":"+ allHighscores[i].score;
+    //     list.appendChild(userHighscores);
+    // }
 }
 
+
+
+//Added event listener for Submit, Go Bck, View Highscores and Clear buttons
 var submit = document.getElementById('submit');
-submit.addEventListener('click', function(event){
+submit.addEventListener('click', function (event) {
     allHighscores(event);
 });
 
 var view = document.getElementById('view')
-view.addEventListener('click', function(event){
+view.addEventListener('click', function (event) {
     userHighscores(event);
 });
 
 var back = document.getElementById('backBtn');
-back.addEventListener('click', function(){
-startButton.style.display = "block";
+back.addEventListener('click', function () {
+    startButton.style.display = "block";
 });
 
-var clear = document.getElementById('clearBtn', function(){
+var clear = document.getElementById('clearBtn', function () {
     window.localStorage.removeItem('highscores');
 });
