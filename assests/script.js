@@ -31,9 +31,11 @@ let questions = [
     }
 ];
 
+
 //Added an event listener for Start Button to begin quiz
 let startButton = document.getElementById('startBtn');
 startButton.addEventListener('click', startGame);
+
 
 //Created variables for Time section
 var timer = document.getElementById('timer');
@@ -48,11 +50,13 @@ function startGame() {
     questionIndex = 0
     timeLeft.textContent = totalTime;
     initials.textContent = "";
+
     //Hide start button and highscore board
     startButton.style.display = "none";
     questionContainer.style.display = "block";
     timer.style.display = "block";
     highscores.style.display = "none";
+
     //When time runs out, the game is over
     var startTimer = setInterval(function () {
         totalTime--;
@@ -77,11 +81,13 @@ var answerC = document.getElementById('btn3');
 var answerD = document.getElementById('btn4');
 var checkAnswer = document.getElementById('checkAnswer');
 var correctAnswer = 0;
+
 //Function to present user with the first question
 function startQuiz() {
     console.log('present question')
     nextQuestion();
 }
+
 //Funtion to present next question after previous question is answered
 function nextQuestion() {
     questionsDiv.textContent = questions[questionIndex].question;
@@ -90,12 +96,15 @@ function nextQuestion() {
     answerC.textContent = questions[questionIndex].choices[2];
     answerD.textContent = questions[questionIndex].choices[3];
 };
+
+
 //Funtion to see if answer is correct or incorrect
 function selectAnswer(answer) {
     var line = document.getElementById('line');
     line.style.display = "block";
     checkAnswer.style.display = "block";
     highscores.style.display = "none";
+
     //User will be notify if answer is correct or wrong. Time will be deducted by 10 secs
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
         correctAnswer++;
@@ -105,8 +114,10 @@ function selectAnswer(answer) {
         timeLeft.textContent = totalTime;
         checkAnswer.textContent = "Wrong!🙁";
     }
+
     //Next question is presented 
     questionIndex++;
+
     //Quiz is done when all questions are answered
     if (questionIndex < questions.length) {
         nextQuestion();
@@ -114,11 +125,14 @@ function selectAnswer(answer) {
         allDone();
     }
 }
+
+
 //Checks answer for selected choice
 function choiceA() { selectAnswer(0); }
 function choiceB() { selectAnswer(1); }
 function choiceC() { selectAnswer(2); }
 function choiceD() { selectAnswer(3); }
+
 //Added event listener to multiple choice buttons
 answerA.addEventListener('click', choiceA);
 answerB.addEventListener('click', choiceB);
@@ -130,6 +144,7 @@ var done = document.getElementById('done');
 var score = document.getElementById('score');
 var initials = document.getElementById('initials');
 var submit = document.getElementById('submit');
+
 //Game is over when time is done 
 function allDone() {
     done.style.display = "block";
@@ -140,18 +155,37 @@ function allDone() {
     score.textContent = correctAnswer;
 }
 
+//User inputs initials/score and it is saved in local storage 
+function saveHighscore(){
+    var savedInitials = initials.value
+    var hscores = JSON.parse(localStorage.getItem("scores"))||[]
+    var newScore = {
+        initials: savedInitials,
+        score: correctAnswer
+    }
+    hscores.push(newScore)
+console.log(correctAnswer)
+localStorage.setItem("scores", JSON.stringify(hscores))
+} 
+
+function displayHighscores(){
+    for (const key in localStorage) {
+        console.log(`${key}: ${localStorage.getItem(key)}`);
+    }
+    
+}
+displayHighscores()
+
+
+
 
 
 
 //Added event listener for Submit, View Highscores, Go Back and Clear buttons
-var submit = document.getElementById('submit');
-submit.addEventListener('click');
+submit.addEventListener('click', saveHighscore);
 
-var view = document.getElementById('view')
-view.addEventListener('click');
+// var back = document.getElementById('backBtn');
+// back.addEventListener('click',);
 
-var back = document.getElementById('backBtn');
-back.addEventListener('click');
-
-var clear = document.getElementById('clearBtn');
-clearBtn.addEventListener('click');
+// var clear = document.getElementById('clearBtn');
+// clearBtn.addEventListener('click',);

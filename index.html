@@ -15,9 +15,10 @@
     <header>
         <!-- Highscore link margin left -->
         <div>
-            <a id="view" href="#" class="header">View High Scores</a>
+            <a id="view" href="highscores.html" class="header">View High Scores</a>
         </div>
         <div>
+
             <!-- Timer -->
             <div id="timer">
                 <i class="far fa-clock"></i> Time: <span id="timeLeft">60 seconds</span>
@@ -33,6 +34,8 @@
                 Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
             <button id="startBtn" class="start_Btn">Start Quiz</button>
         </section>
+
+
         <!-- container for questions and multiple choice answers -->
         <section class="container">
             <div id="questionContainer" class="hide" style="display: none;">
@@ -47,34 +50,40 @@
                 </div>
             </div>
         </section>
+
+
         <!-- initial input with user score -->
         <section id="done" style="display: none;">
             <h2>All Done!</h2>
             <p>Your Score: <span id="score"></span> </p>
             <div>
                 <label for="">Enter Initials</label>
-                <input id="initials" type="text">
-                <button id="submit" type="submit">Submit</button>
+                <form action="highscores.html">
+                    <input id="initials" type="text">
+                    <button id="submit" type="submit">Submit</button>
+                </form>
             </div>
         </section>
-        <!-- High score section to save user scores -->
+
+        <!-- Displays highscore after quiz is done -->
         <section id="highscores" style="display: none;">
-            <h2 style="display: none;">High Scores</h2>
-            <ol id="list" style="display: none;">
+            <h2>High Scores</h2>
+            <ol id="list">
                 <li>AM - 00</li>
                 <li>AM - 00</li>
                 <li>AM - 00</li>
                 <li>AM - 00</li>
             </ol>
             <div>
-                <!-- Go back and Clear button  -->
                 <p>
-                    <button id="backBtn" type="submit" style="display: none;">Go Back</button>
-                    <button id="clearBtn" type="submit" style="display: none;">Clear High Scores</button>
+                    <button id="backBtn" type="submit">Go Back</button>
+                    <button id="clearBtn" type="reset">Clear Scores</button>
                 </p>
             </div>
         </section>
+
     </main>
+
     <!-- linking JavaScript -->
     <script type="text/javascript" src="./assests/script.js"></script>
     <script src="https://kit.fontawesome.com/1d37754851.js" crossorigin="anonymous"></script>

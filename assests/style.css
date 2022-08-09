@@ -42,9 +42,6 @@ h1 {
     background-color: deeppink;
 }
 
-/* .questions {
-    display: none;
-} */
 
 .done {
     display: none;
@@ -54,10 +51,19 @@ h1 {
     display: none;
 }
 
-.highscores ol {
-    overflow-y: scroll;
+.btn {
+    background-color: blueviolet;
+    color: aliceblue;
 }
 
-/* .container {
-    display: none;
-} */
+#done {
+    text-align: center;
+}
+
+#submit {
+    background-color: blueviolet;
+    color: aliceblue;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
