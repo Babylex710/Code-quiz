@@ -2,10 +2,12 @@
     text-decoration: none;
 }
 
+/* View High Scores changes color when user hover */
 .header:hover {
     color: blue;
 }
 
+/* timer displayed to the right */
 #timer {
     margin-right: 25px;
     float: right;
@@ -20,6 +22,7 @@ h1 {
     text-align: center;
 }
 
+/* Start Quiz Button */
 .start_Btn {
     margin: 0;
   position: absolute;
@@ -42,15 +45,7 @@ h1 {
     background-color: deeppink;
 }
 
-
-.done {
-    display: none;
-}
-
-.highscores {
-    display: none;
-}
-
+/* answer choice buttons */
 .btn {
     background-color: blueviolet;
     color: aliceblue;
@@ -60,6 +55,7 @@ h1 {
     text-align: center;
 }
 
+/* Submit initials button */
 #submit {
     background-color: blueviolet;
     color: aliceblue;
@@ -67,3 +63,4 @@ h1 {
     border: none;
     cursor: pointer;
 }
+
