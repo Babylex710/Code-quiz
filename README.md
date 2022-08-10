@@ -16,10 +16,8 @@ Create a timed coding quiz on JavaScript fundamentals that saves user's scores.
 
 ## Usage
 
-User can find deployed app at [GitHub]()
+User can find deployed app at [GitHub](https://github.com/Babylex710/Code-quiz)
 
 The following image shows the web application's appearance:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+   ![alt screenshot](./assests/images/Screen%20Shot%202022-08-09%20at%2011.04.00%20PM.png)
